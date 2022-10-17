@@ -1,11 +1,9 @@
 import { Container } from "./styled";
 import React,{useEffect, useState} from 'react';
 import axios from "axios";
+import { getPokemon, getPokemonDetails } from "../Helpers/Api";
+import { Pokemon, Pokemons } from "../Helpers/interfaces";
 
-interface Pokemon{
-   name: string;
-   url: string;
-}
 
 
 
@@ -13,11 +11,11 @@ export function Pokedex() {
 
    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
    const [selectPokemon, setSelectPokemon] = useState<Pokemon|undefined>(undefined);
-   const [pokemonDetails, setPokemonDetails] = useState<any>(undefined);
+   const [pokemonDetails, setPokemonDetails] = useState<Pokemon | undefined>(undefined);
 
    useEffect(() => {
       try {
-         axios.get("https://pokeapi.co/api/v2/pokemon?limit=50&offset=0").then((res)=> setPokemons(res.data.results))
+         getPokemon().then((res)=> setPokemons(res.results))
       } catch (e) {
          console.log(e);
       }
@@ -26,7 +24,7 @@ export function Pokedex() {
    useEffect(() => {
       if(!selectPokemon){return};
       try {
-         axios.get(`https://pokeapi.co/api/v2/pokemon/${selectPokemon}`).then((res)=> setPokemonDetails(res.data.results))
+         getPokemonDetails(selectPokemon.name).then((res)=> setPokemonDetails(res))
       } catch (e) {
          console.log(e);
       }
