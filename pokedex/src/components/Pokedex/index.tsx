@@ -13,6 +13,7 @@ export function Pokedex() {
 
    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
    const [selectPokemon, setSelectPokemon] = useState<Pokemon|undefined>(undefined);
+   const [pokemonDetails, setPokemonDetails] = useState<any>(undefined);
 
    useEffect(() => {
       try {
@@ -24,6 +25,11 @@ export function Pokedex() {
 
    useEffect(() => {
       if(!selectPokemon){return};
+      try {
+         axios.get(`https://pokeapi.co/api/v2/pokemon/${selectPokemon}`).then((res)=> setPokemonDetails(res.data.results))
+      } catch (e) {
+         console.log(e);
+      }
    }, [selectPokemon]);
 
    return ( 
