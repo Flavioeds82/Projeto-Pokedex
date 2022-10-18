@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Pokemon, Pokemons } from "./interfaces";
+import { Pokemon, PokemonInfo, Pokemons } from "./interfaces";
 
 const URL = `https://pokeapi.co/api/v2/pokemon`;
 
@@ -10,8 +10,8 @@ export async function getPokemon():Promise<Pokemons>{
    return response.data;
 }
 
-export async function getPokemonDetails(name: string):Promise<Pokemon>{
+export async function getPokemonDetails(name: string):Promise<PokemonInfo>{
    const endPoint2 = `${URL}/${name}`;
-   const response = await axios.get<Pokemon>(endPoint2);
+   const response = await axios.get<PokemonInfo>(endPoint2);
    return response.data;
 }

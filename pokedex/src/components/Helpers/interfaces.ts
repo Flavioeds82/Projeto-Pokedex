@@ -11,7 +11,7 @@ export interface Pokemons{
    results: Pokemon[];
 }
 
-export interface Welcome {
+export interface PokemonInfo {
    abilities:                Ability[];
    base_experience:          number;
    forms:                    Species[];

@@ -15,14 +15,20 @@ export const Container = styled.div`
       }
       .poke-grid{
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
          justify-content: center;
          gap: 1rem;
          padding:1rem;
          
          .poke-grid-item{
-            border: 1px solid blue;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-radius: 10px;
             padding: 1rem;
+            font-size: 1.5rem;
+         }
+         .poke-grid-item:hover{
+            transition: all 1s ease;
+            transform: scale(1.1);
          }
       }
    }
