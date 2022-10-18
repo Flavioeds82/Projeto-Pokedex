@@ -1,14 +1,19 @@
 import { useState } from 'react';
+import {BrowserRouter as Router,} from "react-router-dom";
+import {RouteList} from './routes';
 import './App.css';
-import { Pokedex } from './components/Pokedex';
+
 
 function App(){
   const [count, setCount] = useState<number>(0);
 
   return (
-    <div className="App">
-      <Pokedex/>
-    </div>
+      <div className="App">
+        <Router>
+          <RouteList/>
+        </Router> 
+      </div>
+    
   )
 }
 

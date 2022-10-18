@@ -3,6 +3,8 @@ import React,{useEffect, useState} from 'react';
 import axios from "axios";
 import { getPokemon, getPokemonDetails } from "../Helpers/Api";
 import { Pokemon, Pokemons } from "../Helpers/interfaces";
+import { Link } from "react-router-dom";
+import { Menu } from "../Menu";
 
 
 
@@ -14,6 +16,7 @@ export function Pokedex() {
    const [pokemonDetails, setPokemonDetails] = useState<Pokemon | undefined>(undefined);
 
    useEffect(() => {
+      
       try {
          getPokemon().then((res)=> setPokemons(res.results))
       } catch (e) {
@@ -31,10 +34,19 @@ export function Pokedex() {
    }, [selectPokemon]);
 
    return ( 
-      <Container>
-         <h1>{selectPokemon ?.name || "nenhum selecionado"}</h1>
+      <Container>       
          <div className="container">
-            { pokemons.map((pokemon) => <div className="poke" onClick={()=>setSelectPokemon(pokemon)}>{pokemon.name}</div>)}
+            <Menu/>
+            <div className="poke-title">{selectPokemon ?.name || "nenhum selecionado"}</div>
+            <div className="poke-grid">
+               { pokemons.map((pokemon) => (
+                  <div className="poke-grid-item" onClick={()=>setSelectPokemon(pokemon)}>
+                     <h5>{pokemon.name}</h5>
+                     <p>{pokemonDetails}</p>
+                  </div>
+               ))}
+            </div>
+            
          </div>
       </Container>
       

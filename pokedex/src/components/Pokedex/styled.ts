@@ -1,31 +1,30 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-   text-align: center;
-   text-transform: uppercase;
-
-
    .container{
-   padding: 2rem;
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 2rem;
-   justify-content: space-around;
-   font-size: 2rem;
-   text-align: center;
-
+      width: 100%;
+      height: auto;
+      margin:0;
+      padding:0;
+      text-align: center;
+      overflow: hidden;
       
-      .poke{
-         display: flex;
+      .poke-title{
+         font-size: 2rem;
+         padding: 1rem;
+      }
+      .poke-grid{
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
          justify-content: center;
-         align-items: center;
-         border: 1px solid red;
-         width: 20rem;
-         height: 3rem;
-         margin:auto;
+         gap: 1rem;
+         padding:1rem;
+         
+         .poke-grid-item{
+            border: 1px solid blue;
+            padding: 1rem;
+         }
       }
-      .poke:hover{
-         border-color: blue;
-      }
-  }
+   }
+ 
 `;
