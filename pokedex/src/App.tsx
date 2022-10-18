@@ -2,6 +2,10 @@ import { useState } from 'react';
 import {BrowserRouter as Router,} from "react-router-dom";
 import {RouteList} from './routes';
 import './App.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+
+const queryClient = new QueryClient();
 
 
 function App(){
@@ -9,9 +13,12 @@ function App(){
 
   return (
       <div className="App">
-        <Router>
-          <RouteList/>
-        </Router> 
+        <QueryClientProvider client={new QueryClient}>
+          <Router>
+            <RouteList/>
+          </Router> 
+        </QueryClientProvider>
+        
       </div>
     
   )

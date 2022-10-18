@@ -8,7 +8,7 @@ export interface Pokemons{
    count: number;
    next: null | string;
    previus: null | string;
-   results: Pokemon[];
+   results: PokemonInfo[];
 }
 
 export interface PokemonInfo {
