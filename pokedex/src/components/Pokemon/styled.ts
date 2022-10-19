@@ -8,16 +8,18 @@ export const Container = styled.div`
    .container{
       display: flex;
       flex-direction: column;
+      /* justify-content: center;
+      align-items: center; */
       width: 100%;
       height: auto;
-      margin:0;
+      margin:auto;
       padding:1rem;
       text-align: center;
       overflow: hidden;
       .loading{
          width: 1rem;
          height: 1rem;
-         border: 1rem solid #f0f0f0;
+         border: 0.5rem solid #f0f0f0;
          border-left-color: #3D9DFD;
          border-radius: 50%;
          margin: auto;
@@ -38,9 +40,11 @@ export const Container = styled.div`
             font-size: 1.2rem;
             font-weight: bold;
             margin-right: 0.5em;
+            text-align: right;
          }
          .poke-info{
             font-size: 1.2rem;
+            text-align: left;
 
             h1{
                font-size: 3rem;

@@ -32,9 +32,14 @@ export interface PokemonInfo {
    weight:                   number;
 }
 
-export interface Ability {
+export interface Abilities {
    ability:   Species;
    is_hidden: boolean;
+   slot:      number;
+}
+export interface Ability {
+   name:   string;
+   url: boolean;
    slot:      number;
 }
 
