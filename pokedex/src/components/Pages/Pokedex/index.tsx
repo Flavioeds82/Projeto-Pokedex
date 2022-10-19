@@ -4,10 +4,11 @@ import { getPokemons } from "../../Helpers/Api";
 import { Pokemon, PokemonInfo, Pokemons, Type } from "../../Helpers/interfaces";
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from "react-query";
-import { Box, AppBar, Toolbar, IconButton, Typography, LinearProgress, Stack } from "@mui/material";
+import { Box, AppBar, Toolbar, IconButton, Typography, LinearProgress, Stack, styled } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Favorite } from "@mui/icons-material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Badge, { BadgeProps } from '@mui/material/Badge';
 import favorite_icon from "../../../assets/images/favorite-icon.png";
 import favorite_icon_red from "../../../assets/images/favorite-icon-red.png";
 import { FavoriteContext } from "../../../contexts/FavoriteProvider";
@@ -22,6 +23,17 @@ export function Pokedex() {
    const navigate = useNavigate();
    const {data} = useQuery('getPokemons', getPokemons);
    const {favorites, setFavorites} = useContext(FavoriteContext);
+
+   const favoritesCount = favorites.length;
+
+   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+      '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+      },
+    }));
 
    function handleClick(pokemon: string){
       navigate(`/pokemon/${pokemon}`);
@@ -61,6 +73,7 @@ export function Pokedex() {
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                      Pokedex
                   </Typography>
+                  
                   <IconButton
                      size="large"
                      edge="start"
@@ -69,11 +82,16 @@ export function Pokedex() {
                      sx={{ mr: 2 }}
                      onClick={handleFavoritePage}
                   >
+                  <StyledBadge badgeContent={favoritesCount} color="primary">
                      <Favorite />
+                  </StyledBadge>
+                     
+                     
                   </IconButton>
+                  
                </Toolbar>
             </AppBar>
-             <pre>{JSON.stringify(favorites.map((elem)=>elem.name), undefined, 2)}</pre>
+             
             <div className="poke-grid">
                { data?.results.map((pokemon, key) => (
                   <div key={key} className="poke-grid-item">
@@ -84,7 +102,11 @@ export function Pokedex() {
                            <div className="poke-types" key={key}>  {type.type.name}  </div>
                         )}
                      </div> 
-                     <div className="favorite-icon"  onClick={()=> isFavorite(pokemon) ? handleRemoveFavorite(pokemon) : handleAddFavorite(pokemon) }>
+                     <div 
+                        className="favorite-icon"  
+                        onClick={()=> 
+                           isFavorite(pokemon) ? handleRemoveFavorite(pokemon) : handleAddFavorite(pokemon) 
+                        }>
                         {isFavorite(pokemon) &&
                            <img src={favorite_icon_red} alt="favorite icon" />
                         }
