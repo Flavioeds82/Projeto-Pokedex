@@ -18,7 +18,7 @@ export const Container = styled.div`
          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
          justify-content: center;
          gap: 1rem;
-         padding:1rem;
+         /* padding:1rem; */
          
          .poke-grid-item{
             display: flex;
@@ -29,18 +29,21 @@ export const Container = styled.div`
             border-radius: 10px;
             padding: 1rem;
             font-size: 1.5rem;
+            cursor: pointer;
 
             img{
                width: 100%;
                
             }
-
+            
             h5{
                margin-bottom: 0.5rem;
                margin-top: 0.5rem;
             }
             .poke-types-container{
                display: flex;
+               justify-content: center;
+               align-items: center;
                flex-wrap: wrap;
                width: 100%;
                .poke-types{
@@ -49,17 +52,30 @@ export const Container = styled.div`
                   margin: 0.3rem;
                   font-size: 0.8rem;
                   font-weight: bold;
-                  border: 1px solid #999; 
-                  border-radius: 10px;
+                  /* border: 1px solid #999; 
+                  border-radius: 10px; */
                   padding: 5px;
                }
                
             }
+            .favorite-icon{
+               
+               img{
+                  width: 2rem;
+                  height: 2rem;
+               }
+               img:hover{
+                  box-shadow: 0 2px 5px #FFF;
+               }
+            }
          }
          .poke-grid-item:hover{
-            opacity: 0.8;
-            transition: all 1s ease;
-            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,1);
+            #poke-img{
+               opacity: 0.8;
+               transition: all 1s ease;
+               transform: scale(1.2);
+            }
          }
       }
    }

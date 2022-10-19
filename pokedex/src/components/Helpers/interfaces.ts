@@ -38,6 +38,7 @@ export interface Abilities {
    slot:      number;
 }
 export interface Ability {
+   ability: any;
    name:   string;
    url: boolean;
    slot:      number;
