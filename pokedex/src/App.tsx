@@ -3,6 +3,7 @@ import {BrowserRouter as Router,} from "react-router-dom";
 import {RouteList} from './routes';
 import './App.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import {FavoriteProvider}  from './contexts/FavoriteProvider';
 
 
 const queryClient = new QueryClient();
@@ -14,11 +15,12 @@ function App(){
   return (
       <div className="App">
         <QueryClientProvider client={new QueryClient}>
-          <Router>
-            <RouteList/>
-          </Router> 
+          <FavoriteProvider>
+            <Router>
+              <RouteList/>
+            </Router> 
+          </FavoriteProvider>
         </QueryClientProvider>
-        
       </div>
     
   )

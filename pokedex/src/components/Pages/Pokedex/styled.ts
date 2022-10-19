@@ -18,7 +18,7 @@ export const Container = styled.div`
          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
          justify-content: center;
          gap: 1rem;
-         /* padding:1rem; */
+         padding:1rem;
          
          .poke-grid-item{
             display: flex;
@@ -59,6 +59,7 @@ export const Container = styled.div`
                
             }
             .favorite-icon{
+               background: transparent;
                
                img{
                   width: 2rem;
@@ -68,6 +69,7 @@ export const Container = styled.div`
                   box-shadow: 0 2px 5px #FFF;
                }
             }
+            
          }
          .poke-grid-item:hover{
             box-shadow: 0 20px 50px rgba(0,0,0,1);
