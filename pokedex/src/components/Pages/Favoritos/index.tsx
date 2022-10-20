@@ -9,6 +9,7 @@ import { Type } from '../../Helpers/interfaces';
 
 
 
+
 export function Favoritos() {
    
    const {favorites, setFavorites} = useContext(FavoriteContext);
@@ -20,6 +21,9 @@ export function Favoritos() {
    }
    function handleClick(pokemon: string){
       navigate(`/pokemon/${pokemon}`);
+   }
+   function handleFavoritePage(){
+      navigate("/favoritos");
    }
 
    return (
@@ -33,7 +37,6 @@ export function Favoritos() {
                         </IconButton> 
                         <Typography variant="h6" component="div" sx={{ml: 8}}>
                            Favoritos
-            
                         </Typography> 
                      </Toolbar>
                   </AppBar>        

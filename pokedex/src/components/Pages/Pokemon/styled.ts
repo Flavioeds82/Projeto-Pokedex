@@ -16,6 +16,11 @@ export const Container = styled.div`
       padding:1rem;
       text-align: center;
       overflow: hidden;
+      .favorites-icon{
+         margin-top: 1rem;
+         width: 2rem;
+         height: 2rem;
+      }
       .loading{
          width: 1rem;
          height: 1rem;
@@ -51,6 +56,15 @@ export const Container = styled.div`
                font-weight: 400;
             }
          }
+      }
+      .container-favorite-icon{
+         width: 3rem;
+         height: 3rem;
+         text-align: left;
+         cursor: pointer;
+      }
+      .container-favorite-icon img:hover{
+         box-shadow: 0px 2px 5px 2px #FFF;
       }
    }
    @keyframes loading {

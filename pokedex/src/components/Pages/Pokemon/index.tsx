@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import { Container } from './styled';
 import { useParams } from 'react-router-dom';
 import { getPokemon } from '../../Helpers/Api';
 import { PokemonInfo } from '../../Helpers/interfaces';
-import { Box, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Typography, LinearProgress, Stack, styled } from "@mui/material";
+import Badge, { BadgeProps } from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
+import { Favorite } from '@mui/icons-material';
+import { FavoriteContext } from "../../../contexts/FavoriteProvider";
+import favorite_icon from "../../../assets/images/favorite-icon.png";
+import favorite_icon_red from "../../../assets/images/favorite-icon-red.png";
+import { AnyStyledComponent } from 'styled-components';
+
+
 
 
 interface indexProps {
@@ -14,16 +22,44 @@ interface indexProps {
 
 export const Pokemon: React.FC<indexProps> = () => {
 
-   const [pokemonDetails, setPokemonDetails] = useState<PokemonInfo | undefined>(undefined);
+   const [pokemonDetails, setPokemonDetails] = useState<PokemonInfo|undefined>(undefined);
    const [loading, setLoading] = useState<boolean>(true);
    const {name} = useParams();
    const pd = pokemonDetails;
    const navigate = useNavigate();
+   const {favorites, setFavorites} = useContext(FavoriteContext);
+   const favoritesCount = favorites.length;
 
+   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+      '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+      },
+    }));
 
    function handleClick(){
       navigate("/");
    }
+   function handleFavoritePage(){
+      navigate("/favoritos");
+   }
+   function handleAddFavorite(pokemon:any){
+      setFavorites([...favorites, pokemon]);
+   }
+   function handleRemoveFavorite(pokemon:any){
+      setFavorites(favorites.filter((poke) => poke.name != pokemon.name));
+   }
+   function isFavorite(name: string| undefined){
+      const result = favorites.some((poke)=> poke.name === name)
+      if(result){
+         return true
+      }else{
+         return false;
+      }
+   }
+
 
    useEffect(() => {
       try {
@@ -49,7 +85,19 @@ export const Pokemon: React.FC<indexProps> = () => {
                      </IconButton> 
                      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <h1>{name}</h1>
-                     </Typography> 
+                     </Typography>
+                     <IconButton
+                           size="large"
+                           edge="start"
+                           color="inherit"
+                           aria-label="favorites"
+                           sx={{ mr: 2 }}
+                           onClick={handleFavoritePage}
+                        >
+                           <StyledBadge badgeContent={favoritesCount} color="primary">
+                              <Favorite />
+                           </StyledBadge>
+                        </IconButton> 
                   </Toolbar>
                </AppBar>        
             </Box> 
@@ -82,6 +130,17 @@ export const Pokemon: React.FC<indexProps> = () => {
                <div className="poke-label"> Habilidades: </div>
                <div className="poke-info">{pd?.abilities.map((ability)=> ability.ability.name)}</div>
             </div>
+            <div className="container-favorite-icon" onClick={()=> 
+               isFavorite(name) ? handleRemoveFavorite(pd) : handleAddFavorite(pd)
+            }>                
+               {isFavorite(name) &&
+               <img className="favorites-icon" src={favorite_icon_red} alt="favorite icon" />
+               }
+               {!isFavorite(name) &&
+               <img className="favorites-icon" src={favorite_icon} alt="favorite icon" />
+               }
+            </div>
+            
          </div>
       </Container>
    );
