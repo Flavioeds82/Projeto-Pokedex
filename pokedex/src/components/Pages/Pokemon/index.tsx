@@ -45,10 +45,12 @@ export const Pokemon: React.FC<indexProps> = () => {
    function handleFavoritePage(){
       navigate("/favoritos");
    }
-   function handleAddFavorite(pokemon:any){
+   function handleAddFavorite(pokemon:PokemonInfo|undefined){
+      if(!pokemon){return}
       setFavorites([...favorites, pokemon]);
    }
-   function handleRemoveFavorite(pokemon:any){
+   function handleRemoveFavorite(pokemon:PokemonInfo|undefined){
+      if(!pokemon){return}
       setFavorites(favorites.filter((poke) => poke.name != pokemon.name));
    }
    function isFavorite(name: string| undefined){

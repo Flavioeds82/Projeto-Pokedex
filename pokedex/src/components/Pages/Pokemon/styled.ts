@@ -8,8 +8,8 @@ export const Container = styled.div`
    .container{
       display: flex;
       flex-direction: column;
-      /* justify-content: center;
-      align-items: center; */
+      justify-content: center;
+      align-items: center;
       width: 100%;
       height: auto;
       margin:auto;
@@ -44,7 +44,7 @@ export const Container = styled.div`
          .poke-label{
             font-size: 1.2rem;
             font-weight: bold;
-            margin-right: 0.5em;
+            /* margin-right: 0.5em; */
             text-align: right;
          }
          .poke-info{

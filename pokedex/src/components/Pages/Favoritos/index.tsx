@@ -14,6 +14,8 @@ export function Favoritos() {
    
    const {favorites, setFavorites} = useContext(FavoriteContext);
    const navigate = useNavigate();
+   const favoritesCount = favorites.length;
+
 
 
    function handleBackClick(){
@@ -41,20 +43,27 @@ export function Favoritos() {
                      </Toolbar>
                   </AppBar>        
             </Box>
-            <div className="poke-grid">
-                  {favorites?.map((pokemon, key) => (
-                     <div key={key} className="poke-grid-item">
-                        <img id="poke-img" src={pokemon.sprites.other?.dream_world.front_default} onClick={()=> handleClick(pokemon.name)} alt="pokemon"/>
-                        <h5>{pokemon.name}</h5>
-                        <div className="poke-types-container">
-                           {pokemon.types.map((type:Type, key: number)=>
-                              <div className="poke-types" key={key}>  {type.type.name}  </div>
-                           )}
-                        </div> 
-                     
-                     </div>
-                  ))}
-            </div> 
+            {(favoritesCount != 0) &&
+               <div className="poke-grid">
+                     {favorites?.map((pokemon, key) => (
+                        <div key={key} className="poke-grid-item">
+                           <img id="poke-img" src={pokemon.sprites.other?.dream_world.front_default} onClick={()=> handleClick(pokemon.name)} alt="pokemon"/>
+                           <h5>{pokemon.name}</h5>
+                           <div className="poke-types-container">
+                              {pokemon.types.map((type:Type, key: number)=>
+                                 <div className="poke-types" key={key}>  {type.type.name}  </div>
+                              )}
+                           </div> 
+                        
+                        </div>
+                     ))}
+               </div> 
+            }
+            {(favoritesCount==0) &&
+               <div className="poke-empty">
+                  <h3>Nenhum Pokemon adicionado aos favoritos</h3>
+               </div>
+            }
          </div>
       </Container>
    );
