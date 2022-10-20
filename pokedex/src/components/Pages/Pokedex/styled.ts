@@ -15,7 +15,7 @@ export const Container = styled.div`
       }
       .poke-grid{
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(7rem, 15rem));
+         grid-template-columns: repeat(auto-fit, minmax(140px, 15rem));
          justify-content: center;
          gap: 1rem;
          padding:1rem;
