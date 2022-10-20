@@ -1,6 +1,7 @@
 
 # Projeto Pokedex
 Porjeto inspirado nos vídeos do canal PenseApp (https://www.youtube.com/channel/UCeh1dIqBouGhlo1SwtnXpOw/about).
+
 ### Link: https://vercel.com/flavioeds82/projeto-pokedex/AuCyMmhHTS2fLunND1yH7HntGreo
  
 ## Technology 
@@ -14,7 +15,12 @@ Porjeto inspirado nos vídeos do canal PenseApp (https://www.youtube.com/channel
 * Typescript
 * Material UI
 
-          
+## Apredizado:
+* Consumo de API
+* Manipulação do React Context
+* Tipagem de componentes
+* Manipulação de arquivos com Axios
+* Incorporar componentes externos do Material UI na aplicação
 
 ## Serviços e hospedagem
 
@@ -31,20 +37,14 @@ Porjeto inspirado nos vídeos do canal PenseApp (https://www.youtube.com/channel
   
 # Imagens do Projeto:
 
-### 1 - Seção Início:
-<img src="https://github.com/Flavioeds82/Maria_Ismaria_Portifolio/blob/master/mary/public/assets/images/README/img1.png" width=500px/>
+### 1 - Página Início:
+<img src="https://github.com/Flavioeds82/Projeto-Pokedex/blob/master/pokedex/src/assets/images/Readme/01.png" width=500px/>
 
-### 2 - Seção Sobre:
-<img src="https://github.com/Flavioeds82/Maria_Ismaria_Portifolio/blob/master/mary/public/assets/images/README/img2.png" width=500px/>
+### 2 - Página Pokemon:
+<img src="https://github.com/Flavioeds82/Projeto-Pokedex/blob/master/pokedex/src/assets/images/Readme/02.png" width=500px/>
 
-### 3 - Seção Qualificações:
-<img src="https://github.com/Flavioeds82/Maria_Ismaria_Portifolio/blob/master/mary/public/assets/images/README/img3.png" width=500px/>
-
-### 4 - Seção Experiências:
-<img src="https://github.com/Flavioeds82/Maria_Ismaria_Portifolio/blob/master/mary/public/assets/images/README/img4.png" width=500px/>
-
-### 5 - Seção Contato:
-<img src="https://github.com/Flavioeds82/Maria_Ismaria_Portifolio/blob/master/mary/public/assets/images/README/img5.png" width=500px/>
+### 3 - Página Favoritos:
+<img src="https://github.com/Flavioeds82/Projeto-Pokedex/blob/master/pokedex/src/assets/images/Readme/03.png" width=500px/>
 
 #
 
